@@ -1,0 +1,26 @@
+{
+  "name": "mern-shop",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Mern shop",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
+  },
+  "author": "Jan Esser",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
