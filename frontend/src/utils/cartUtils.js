@@ -4,7 +4,7 @@ export const addDecimals = (num) => {
 
 export const updateCart = (state) => {
   // Calculate the items price
-  state.cartItems.reduce((acc, item) => {
+  const itemsPrice = state.cartItems.reduce((acc, item) => {
     const price = parseFloat(item.price);
     const qty = parseInt(item.qty, 10);
     if (!isNaN(price) && !isNaN(qty)) {
@@ -12,18 +12,21 @@ export const updateCart = (state) => {
     }
     return acc;
   }, 0);
-  
+
+  // Update the itemsPrice in the state
+  state.itemsPrice = itemsPrice;
+
   // Calculate the shipping price
   state.shippingPrice = addDecimals(state.itemsPrice > 100 ? 0 : 10);
 
   // Calculate the tax price
-  state.taxPrice = addDecimals(Number((0.15 * state.itemsPrice).toFixed(2)));
+  state.taxPrice = addDecimals(0.15 * state.itemsPrice);
 
   // Calculate the total price
   state.totalPrice = (
-    Number(state.itemsPrice) +
-    Number(state.shippingPrice) +
-    Number(state.taxPrice)
+    parseFloat(state.itemsPrice) +
+    parseFloat(state.shippingPrice) +
+    parseFloat(state.taxPrice)
   ).toFixed(2);
 
   // Save the cart to localStorage

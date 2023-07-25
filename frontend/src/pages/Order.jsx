@@ -52,9 +52,8 @@ const Order = () => {
             <ListGroup.Item>
               <h2>Shipping</h2>
               <p>
-                <strong>Address:</strong>
-                {cart.shippingAddress.address}, {cart.shippingAddress.city}{' '}
-                {cart.shippingAddress.postalCode},{' '}
+                <strong>Address:</strong> {cart.shippingAddress.address},{' '}
+                {cart.shippingAddress.city} {cart.shippingAddress.postalCode},{' '}
                 {cart.shippingAddress.country}
               </p>
             </ListGroup.Item>
@@ -82,13 +81,14 @@ const Order = () => {
                             rounded
                           />
                         </Col>
-                        <Col>
+                        <Col className='my-2'>
                           <Link to={`/product/${item.product}`}>
                             {item.name}
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {`${item.qty} x
+                          $${item.price.toFixed(2)} = $${(item.qty * item.price).toFixed(2)}`}
                         </Col>
                       </Row>
                     </ListGroup.Item>
