@@ -17,7 +17,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { addToCart } from '../slices/cartSlice';
 
-const Product = () => {
+const ProductDetail = () => {
   const { id: productId } = useParams();
 
   const dispatch = useDispatch();
@@ -26,8 +26,10 @@ const Product = () => {
   const [qty, setQty] = useState(1);
 
   const addToCartHandler = () => {
-    dispatch(addToCart({ ...product, qty }));
-    navigate('/cart');
+    if (product) {
+      dispatch(addToCart({ ...product, qty }));
+      navigate('/cart');
+    }
   };
 
   const {
@@ -134,4 +136,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductDetail;
