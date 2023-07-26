@@ -42,10 +42,10 @@ const Login = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer className='mt-3'>
       <h1>Sign In</h1>
 
-      <Form onSubmit={submitHandler}>
+      <Form className='my-2' onSubmit={submitHandler}>
         <Form.Group className='my-2' controlId='email'>
           <Form.Label>Email Address</Form.Label>
           <Form.Control

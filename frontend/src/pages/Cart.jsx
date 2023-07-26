@@ -45,15 +45,16 @@ const Cart = () => {
             {cartItems.map((item) => (
               <ListGroup.Item key={item._id}>
                 <Row>
-                  <Col md={2}>
+                  <Col className='mb-1' md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col md={3}>
+                  <Col className='my-1' md={3}>
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
-                  <Col md={2}>
+                  <Col className='my-1' md={2}>${item.price}</Col>
+                  <Col className='my-1' md={2}>
                     <Form.Control
+                      className='my-1'
                       as='select'
                       value={item.qty}
                       onChange={(e) =>
@@ -67,7 +68,7 @@ const Cart = () => {
                       ))}
                     </Form.Control>
                   </Col>
-                  <Col md={2}>
+                  <Col my-1 md={2}>
                     <Button
                       type='button'
                       variant='light'
