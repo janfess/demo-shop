@@ -45,8 +45,8 @@ const Login = () => {
     <FormContainer className='mt-3'>
       <h1>Sign In</h1>
 
-      <Form className='my-2' onSubmit={submitHandler}>
-        <Form.Group className='my-2' controlId='email'>
+      <Form className='mt-2' onSubmit={submitHandler}>
+        <Form.Group className='mt-2' controlId='email'>
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type='email'
@@ -56,7 +56,7 @@ const Login = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='my-2' controlId='password'>
+        <Form.Group className='mt-2' controlId='password'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
@@ -66,14 +66,14 @@ const Login = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button disabled={isLoading} type='submit' variant='primary'>
+        <Button disabled={isLoading} className='mt-2' type='submit' variant='primary'>
           Sign In
         </Button>
 
         {isLoading && <Loader />}
       </Form>
 
-      <Row className='py-3'>
+      <Row className='pt-3 pb-3'>
         <Col>
           New Customer?{' '}
           <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>

@@ -48,13 +48,15 @@ const Cart = () => {
                   <Col className='mb-1' md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col className='my-1' md={3}>
+                  <Col className='mb-1' md={3}>
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
-                  <Col className='my-1' md={2}>${item.price}</Col>
-                  <Col className='my-1' md={2}>
+                  <Col className='mb-1' md={2}>
+                    ${item.price}
+                  </Col>
+                  <Col className='mb-1' md={2}>
                     <Form.Control
-                      className='my-1'
+                      className='mb-1'
                       as='select'
                       value={item.qty}
                       onChange={(e) =>
@@ -68,7 +70,7 @@ const Cart = () => {
                       ))}
                     </Form.Control>
                   </Col>
-                  <Col my-1 md={2}>
+                  <Col my-2 md={2}>
                     <Button
                       type='button'
                       variant='light'
