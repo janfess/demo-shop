@@ -31,7 +31,7 @@ const Shipping = () => {
       <Checkout step1 step2 />
       <h1>Shipping</h1>
       <Form onSubmit={submitHandler}>
-        <Form.Group className='my-2' controlId='address'>
+        <Form.Group className='mt-2 mb-2' controlId='address'>
           <Form.Label>Address</Form.Label>
           <Form.Control
             type='text'
@@ -42,7 +42,7 @@ const Shipping = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='my-2' controlId='city'>
+        <Form.Group className='mt-2 mb-2' controlId='city'>
           <Form.Label>City</Form.Label>
           <Form.Control
             type='text'
@@ -53,7 +53,7 @@ const Shipping = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='my-2' controlId='postalCode'>
+        <Form.Group className='mt-2 mb-2' controlId='postalCode'>
           <Form.Label>Postal Code</Form.Label>
           <Form.Control
             type='text'
@@ -64,7 +64,7 @@ const Shipping = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='my-2' controlId='country'>
+        <Form.Group className='mt-2 mb-2' controlId='country'>
           <Form.Label>Country</Form.Label>
           <Form.Control
             type='text'
@@ -75,7 +75,7 @@ const Shipping = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type='submit' variant='primary'>
+        <Button className='mt-2 mb-2' type='submit' variant='primary'>
           Continue
         </Button>
       </Form>

@@ -36,7 +36,7 @@ const Payment = () => {
           <Form.Label as='legend'>Select Method</Form.Label>
           <Col>
             <Form.Check
-              className='my-2'
+              className='mt-2 mb-2'
               type='radio'
               label='PayPal or Credit Card'
               id='PayPal'

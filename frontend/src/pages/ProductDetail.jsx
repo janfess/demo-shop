@@ -40,7 +40,7 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Link className='btn btn-light my-3' to='/'>
+      <Link className='btn btn-light mt-3 mb-3' to='/'>
         Go Back
       </Link>
       {isLoading ? (

@@ -51,7 +51,7 @@ const Register = () => {
     <FormContainer>
       <h1>Register</h1>
       <Form onSubmit={submitHandler}>
-        <Form.Group className='my-2' controlId='name'>
+        <Form.Group className='mt-2 mb-2' controlId='name'>
           <Form.Label>Name</Form.Label>
           <Form.Control
             type='name'
@@ -61,7 +61,7 @@ const Register = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='my-2' controlId='email'>
+        <Form.Group className='mt-2 mb-2' controlId='email'>
           <Form.Label>Email Address</Form.Label>
           <Form.Control
             type='email'
@@ -71,7 +71,7 @@ const Register = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group className='my-2' controlId='password'>
+        <Form.Group className='mt-2 mb-2' controlId='password'>
           <Form.Label>Password</Form.Label>
           <Form.Control
             type='password'
@@ -80,7 +80,7 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group className='my-2' controlId='confirmPassword'>
+        <Form.Group className='mt-2 mb-2' controlId='confirmPassword'>
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type='password'
@@ -97,7 +97,7 @@ const Register = () => {
         {isLoading && <Loader />}
       </Form>
 
-      <Row className='py-3'>
+      <Row className='pt-3 pb-3'>
         <Col>
           Already have an account?{' '}
           <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
