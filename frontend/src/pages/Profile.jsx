@@ -22,8 +22,10 @@ const Profile = () => {
     useProfileMutation();
 
   useEffect(() => {
-    setName(userInfo.name);
-    setEmail(userInfo.email);
+    if (userInfo) {
+      setName(userInfo.name);
+      setEmail(userInfo.email);
+    }
   }, [userInfo, userInfo.name, userInfo.email]);
 
   const submitHandler = async (e) => {
