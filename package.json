@@ -2,10 +2,12 @@
   "name": "mern-shop",
   "version": "1.0.0",
   "description": "Ecommerce application MERN stack",
-  "main": "index.js",
+  "main": "/backend/app.js",
   "scripts": {
+    "start": "node backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
+    "server": "nodemon backend/app.js",
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend" 
   },
   "repository": {
     "type": "git",
@@ -13,9 +15,5 @@
   },
   "keywords": [],
   "author": "Jan Esser",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/janfess/mern-demo-shop/issues"
-  },
-  "homepage": "https://github.com/janfess/mern-demo-shop#readme"
+  "license": "ISC"
 }
