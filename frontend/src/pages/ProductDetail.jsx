@@ -18,6 +18,7 @@ import {
 import { useGetProductDetailsQuery, useCreateReviewMutation } from '../slices/productsApiSlice';
 import {toast} from 'react-toastify'
 import Rating from '../components/Rating';
+import Meta from '../components/Meta';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { addToCart } from '../slices/cartSlice';
@@ -81,6 +82,7 @@ const ProductDetail = () => {
         </Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row>
             <Col md={6}>
               <Image src={product.image} alt={product.name} fluid />
@@ -206,7 +208,9 @@ const ProductDetail = () => {
                         disabled={loadingProductReview}
                         type='submit'
                         variant='primary'
-                      >Submit</Button>
+                      >
+                        Submit
+                      </Button>
                     </Form>
                   ) : (
                     <Message>

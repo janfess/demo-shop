@@ -37,7 +37,7 @@ const Header = () => {
                 className='rounded'
                 src={logo}
                 alt='Shop'
-                style={{ width: '35px', height: '30px' }}
+                style={{ width: '35px', height: '30px', marginRight: '10px' }}
               />{' '}
               Shop
             </Navbar.Brand>
@@ -45,7 +45,7 @@ const Header = () => {
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-            <Search />
+              <Search />
               <LinkContainer to='/cart'>
                 <Nav.Link>
                   <FaShoppingCart /> Cart
