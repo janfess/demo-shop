@@ -1,11 +1,11 @@
 ### Get all prouducts
-GET http://localhost:8000/api/products
+GET http://localhost:5000/api/products
 
 ### GET single product
-GET   http://localhost:8000/api/products/64ad5e7e30c60ba8498a6f27
+GET   http://localhost:5000/api/products/64ad5e7e30c60ba8498a6f27
 
 ### Register user
-POST http://localhost:8000/api/users
+POST http://localhost:5000/api/users
 content-type: application/json
 
 {
@@ -15,16 +15,16 @@ content-type: application/json
 }
 
 ### Login user
-POST http://localhost:8000/api/users/login
+POST http://localhost:5000/api/users/auth
 content-type: application/json
 
 {
-  "email": "jan.esser@posteo.de",
+  "email": "john@gmail.com",
   "password": "123456"
 }
 
 ### Login admin 
-POST http://localhost:8000/api/users/login
+POST http://localhost:5000/api/users/auth
 content-type: application/json
 
 {
@@ -33,46 +33,51 @@ content-type: application/json
 }
 
 ### Logout user
-POST http://localhost:8000/api/users/logout
+POST http://localhost:5000/api/users/logout
 
 ### Get User Profile
-GET http://localhost:8000/api/users/profile
+GET http://localhost:5000/api/users/profile
 
 ### Update User Profile
-PUT http://localhost:8000/api/users/profile
+PUT http://localhost:5000/api/users/profile
 content-type: application/json
 
 {
   "email": "john@email.com"
 }
 
-### Get users
-GET http://localhost:8000/api/users
+### Get users / admin
+GET http://localhost:5000/api/users
 
-### Get user by id
-GET http://localhost:8000/api/users/64ad5e7e30c60ba8498a6f23
+### Get user by id / admin
+GET http://localhost:5000/api/users/64ad5e7e30c60ba8498a6f23
 
 ### Delete user 
-DELETE http://localhost:8000/api/users/64ad5e7e30c60ba8498a6f23
+DELETE http://localhost:5000/api/users/64ad5e7e30c60ba8498a6f23
 
 ### Update user 
-PUT http://localhost:8000/api/users/64ad5e7e30c60ba8498a6f23
+PUT http://localhost:5000/api/users/64ad5e7e30c60ba8498a6f23
+content-type: application/json
+
+{
+  "email": "john@email.com"
+}
 
 ### Create new order
-POST http://localhost:8000/api/orders
+POST http://localhost:5000/api/orders
 
 ### Get logged in user orders / admin 
-GET http://localhost:8000/api/orders/my
+GET http://localhost:5000/api/orders/my
 
 ### Get order by id / admin
-GET http://localhost:8000/api/orders/:id
+GET http://localhost:5000/api/orders/:id
 
 ### Update order to paid 
-PUT http://localhost:8000/api/orders/:id/pay
+PUT http://localhost:5000/api/orders/:id/pay
 
 ### Update to delivered / admin
-PUT http://localhost:8000/api/orders/:id/deliver
+PUT http://localhost:5000/api/orders/:id/deliver
 
 ### Get all orders / admin
-GET http://localhost:8000/api/orders
+GET http://localhost:5000/api/orders
 

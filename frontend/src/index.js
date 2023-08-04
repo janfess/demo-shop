@@ -27,6 +27,8 @@ import Profile from './pages/Profile';
 import Order from './pages/Order';
 import ProductList from './pages/ProductList';
 import ProductEdit from './pages/ProductEdit';
+import UserEdit from './pages/UserEdit';
+import UserList from './pages/UserList';
 import store from './store';
 import { Provider } from 'react-redux';
 
@@ -50,6 +52,8 @@ const router = createBrowserRouter(
         <Route path='/admin/orderlist' element={<OrderList />} />
         <Route path='/admin/productlist' element={<ProductList />} />
         <Route path='/admin/product/:id/edit' element={<ProductEdit />} />
+        <Route path='/admin/userlist' element={<UserList />} />
+        <Route path='/admin/user/:id/edit' element={<UserEdit />} />
       </Route>
     </Route>
   )
