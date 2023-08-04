@@ -5,7 +5,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { toast } from 'react-toastify';
-import { useUpdateProductMutation, useGetProductDetailsQuery } from '../slices/productsApiSlice';
+import { useUpdateProductMutation, useGetProductDetailsQuery, useUploadProductImageMutation } from '../slices/productsApiSlice';
 
 
 const ProductEdit = () => {
@@ -27,6 +27,8 @@ const ProductEdit = () => {
 
   const [updateProduct, { isLoading: loadingUpdate }] =
     useUpdateProductMutation();
+
+  const [uploadProductImage, {isLoading: loadingUpload}] = useUploadProductImageMutation()
 
   const navigate = useNavigate();
 
@@ -64,6 +66,19 @@ const ProductEdit = () => {
     }
   };
 
+  const uploadFileHandler = async (e) => {
+    const formData = new FormData();
+    formData.append('image', e.target.files[0]);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      setImage(res.image);
+      refetch()
+    } catch (err) {
+      toast.error(err?.data?.message || err.error);
+    }
+  };
+
   return (
     <>
       <Link to='/admin/productlist' className='btn btn-light mt-3 mb-3'>
@@ -72,6 +87,7 @@ const ProductEdit = () => {
       <FormContainer>
         <h1>Edit Product</h1>
         {loadingUpdate && <Loader />}
+        {loadingUpload && <Loader />}
         {isLoading ? (
           <Loader />
         ) : error ? (
@@ -96,6 +112,21 @@ const ProductEdit = () => {
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
+            <Form.Group className='mt-2 mb-2' controlId='image'>
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter image url'
+                value={image}
+                onChange={setImage}
+              ></Form.Control>
+              <Form.Control
+                type='file'
+                placeholder='Choose file'
+                onChange={uploadFileHandler}
+              ></Form.Control>
+            </Form.Group>
+            
             <Form.Group className='mt-2 mb-2' controlId='brand'>
               <Form.Label>Brand</Form.Label>
               <Form.Control

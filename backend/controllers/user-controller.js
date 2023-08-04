@@ -2,7 +2,7 @@ import asyncHandler from '../middleware/async-handler.js';
 import generateToken from '../utils/generate-token.js';
 import User from '../models/user-model.js';
 
-// Auth user & get token @route POST /api/users/auth @access Public
+// Auth user & get token POST /api/users/auth @Public
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -23,7 +23,7 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-// Register a new user @route POST /api/users @access Public
+// Register a new user POST /api/users @Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
@@ -55,7 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-// Logout user / clear cookie @route POST /api/users/logout @access Public
+// Logout user / clear cookie POST /api/users/logout @Public
 const logoutUser = (req, res) => {
   res.cookie('jwt', '', {
     httpOnly: true,
@@ -64,7 +64,7 @@ const logoutUser = (req, res) => {
   res.status(200).json({ message: 'Logged out successfully' });
 };
 
-// Get user profile @route GET /api/users/profile @access Private
+// Get user profile GET /api/users/profile @Private
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
@@ -81,7 +81,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-// Update user profile @route PUT /api/users/profile @access  Private
+// Update user profile PUT /api/users/profile @Private
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
@@ -107,24 +107,61 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-// Get all users @route GET /api/users Private/Admin
+// Get all users GET /api/users @Private/Admin
 const getUsers = asyncHandler(async (req, res) => {
-  res.send('get users');
+  const users = await User.find({})
+  res.status(200).json(users)
 });
 
-// Delete user @route DELETE /api/users/:id @access Private/Admin
+// Delete user DELETE /api/users/:id @Private/Admin
 const deleteUser = asyncHandler(async (req, res) => {
-  res.send('delete user');
+  const user = await User.findById(req.params.id)
+
+  if (user) {
+    if (user.isAdmin) {
+      res.status(400);
+      throw new Error('Cannot delete admin user');
+    }
+    await User.deleteOne({ _id: user._id });
+    res.status(200).json({ messsage: 'User deleted successfully' });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
 });
 
-// Get user by ID @route GET /api/users/:id @access Private/Admin
+// Get user by ID GET /api/users/:id @Private/Admin
 const getUserById = asyncHandler(async (req, res) => {
-  res.send('get user by id');
+  const user = await User.findById(req.params.id).select('-password');
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
 });
 
-// Update user @route PUT /api/users/:id @access Private/Admin
+// Update user PUT /api/users/:id @Private/Admin
 const updateUser = asyncHandler(async (req, res) => {
-  res.send('update user');
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.isAdmin = Boolean(req.body.isAdmin);
+
+    const updatedUser = await user.save();
+
+    res.status(200).json({
+      _id: updatedUser._id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      isAdmin: updatedUser.isAdmin,
+    });
+  } else {
+    res.status(404);
+    throw new Error('User not found');
+  }
 });
 
 export {
