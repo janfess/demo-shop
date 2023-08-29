@@ -22,3 +22,6 @@ main {
   text-overflow: ellipsis; /* Add ellipsis for long text */
   white-space: nowrap; /* Prevent wrapping */
 }
+.custom-carousel {
+  width: 600px;
+}
