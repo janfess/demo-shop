@@ -19,7 +19,7 @@ const Search = () => {
   };
 
   return (
-    <Form onSubmit={submitHandler} className='d-flex mx-3'>
+    <Form onSubmit={submitHandler} className='d-flex mt-2 mb-2'>
       <Form.Control
         type='text'
         name='q'
