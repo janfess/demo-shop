@@ -40,7 +40,7 @@ const Search = () => {
   };
 
   return (
-    <Form onSubmit={submitHandler} style={marginStyle} className='d-flex'>
+    <Form onSubmit={submitHandler} style={marginStyle} className='d-flex mx-md-3 mx-sm-0'>
       <Form.Control
         type='text'
         name='q'
