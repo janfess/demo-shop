@@ -9,7 +9,7 @@ const dbName = process.env.DB_NAME
 const connectDB = async () => {
   try {
     const connect = await mongoose.connect(
-      `mongodb+srv://${dbUser}:${dbPassword}@cluster0.ezcjmm3.mongodb.net/${dbName}`);
+      `mongodb+srv://${dbUser}:${dbPassword}@cluster1.pcgpqg8.mongodb.net/${dbName}`);
     console.log(`Connected to MongoDB`);
   } catch (error) {
     console.error(`Error: ${error.message}`);
